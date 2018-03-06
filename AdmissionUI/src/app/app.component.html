@@ -1,20 +1,100 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to {{ title }}
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  <img width="500" height="400" alt="Logo" src="https://cdn.dribbble.com/users/182414/screenshots/1949590/rasa_lotusdribble.jpg">
 
+<br/> 
+<button type="button" class="btn btn-default" (click)="showRegistrationToggle()">Register/Login</button>
+<button type="button" class="btn btn-default" (click)="showCoursesToggle()">View Courses</button>
+<button type="button" class="btn btn-default" (click)="showScheduleToggle()">View Schedule</button>
+</div>
+
+<br/>
+<br/>
+<br/>
+<div class="container" >
+<table class="table table-bordered" *ngIf="showCourses">
+  <thead>
+    <tr  style="background:darkorange;">
+      <th>Course Id</th>
+      <th>Course Name</th>
+      <th>Course Credit</th>
+      <th>Course Start Date</th>
+      <th>Course Fees</th>
+      <th>Course Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tbody>
+      <tr *ngFor="let course of courses">
+          <td>{{course.courseId}}</td>
+          <td>{{course.courseName}}</td>
+          <td>{{course.credit}}</td>
+          <td>{{course.startDate}}</td>
+          <td>{{course.fees | currency}}</td>    
+          <td>{{course.grade}}</td>    
+      </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="container" *ngIf="showRegistration" style="text-align:center">
+<div class="panel panel-default">
+    <div class="panel-heading" style="background:darkorange;" >Registration Form</div>
+    <div class="panel-body">
+
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="inputType" class="col-sm-2 control-label">First Name:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="input" placeholder="First Name">
+            </div>
+        </div>
+    </form>
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+          <label for="inputType" class="col-sm-2 control-label">Last Name:</label>
+          <div class="col-sm-2">
+              <input type="text" class="form-control" id="input" placeholder="Last Name">
+          </div>
+      </div>
+  </form>
+    
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="inputType" class="col-sm-2 control-label">Email Id:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="input" placeholder="@email">
+        </div>
+    </div>
+ </form>
+
+ <form class="form-horizontal" role="form">
+      <div class="form-group">
+          <label for="inputType" class="col-sm-2 control-label">Password:</label>
+          <div class="col-sm-2">
+              <input type="password" class="form-control" id="input" placeholder="Password">
+          </div>
+      </div>
+  </form>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="inputType" class="col-sm-2 control-label">Date Of Birth</label>
+        <div class="col-sm-2">
+            <input type="date" class="form-control" id="input" placeholder="mm/dd/yyyy">
+        </div>
+    </div>
+</form>
+
+<button type="button" class="btn btn-default" (click)="submitRegistration()">Submit</button>
+<button type="button" class="btn btn-default" (click)="cancelRegistration()">Cancel</button>
+
+    </div>
+  </div>
+</div>
